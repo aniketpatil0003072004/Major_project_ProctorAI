@@ -20,8 +20,12 @@ app.get("/health", async(req, res)=>{
 
 app.post("/send-mail", async (req, res) =>{
     const {message, to} = req.body;
+    console.log(message);
+    
     try{
         await sendMail(message, to)
+        console.log("Email sent successfully");
+        
         res.status(200).json({
             message:`Email successfully sent to ${to}`
         })
